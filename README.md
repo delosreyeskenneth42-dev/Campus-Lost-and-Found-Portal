@@ -1,2 +1,2 @@
 # Campus-Lost-and-Found-Portal
-My first actual practice website practice using html, css, and javascript and GUI in java!!!
+My first actual practice website using html, css, and javascript and a separate GUI in java!!!
