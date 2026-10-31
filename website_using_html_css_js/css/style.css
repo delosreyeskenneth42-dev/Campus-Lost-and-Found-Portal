@@ -1,0 +1,12 @@
+body{
+    background-color: lightgray;
+}
+h1{
+    color: darkblue;
+}
+p{
+    color: gray;
+}
+.nav-link{
+    color: blue;
+}
