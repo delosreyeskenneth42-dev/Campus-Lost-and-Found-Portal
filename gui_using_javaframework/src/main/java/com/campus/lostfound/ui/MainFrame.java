@@ -2,10 +2,12 @@ package com.campus.lostfound.ui;
 
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
-import javax.swing.JFrame;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import javax.swing.BorderFactory;
 
 public class MainFrame extends JFrame {
 
@@ -19,7 +21,7 @@ public class MainFrame extends JFrame {
         JPanel headerPanel = new JPanel();
         JPanel contentPanel = new JPanel();
         
-        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setLayout(new BorderLayout(0, 100));
 
         JLabel welcomeLabel = new JLabel("Welcome to the Campus Lost and Found Portal!");
         headerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -30,6 +32,9 @@ public class MainFrame extends JFrame {
         JLabel lostItemLabel = new JLabel("Find lost items and report found belongings.");
         lostItemLabel.setHorizontalAlignment(JLabel.CENTER);
         contentPanel.add(lostItemLabel);
+
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         mainPanel.add(contentPanel, BorderLayout.CENTER);
         add(mainPanel);
     }
