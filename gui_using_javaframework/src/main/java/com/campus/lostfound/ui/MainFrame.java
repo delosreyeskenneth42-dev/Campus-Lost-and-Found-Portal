@@ -54,6 +54,8 @@ public class MainFrame extends JFrame {
 
         navigationPanel.add(reportFoundButton);
 
+        navigationPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
+
         mainPanel.setLayout(new BorderLayout(10, 10));
 
         JLabel welcomeLabel = new JLabel("Welcome to the Campus Lost and Found Portal!");
