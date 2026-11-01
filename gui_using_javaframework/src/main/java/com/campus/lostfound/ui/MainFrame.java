@@ -1,7 +1,9 @@
 package com.campus.lostfound.ui;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Dimension;
 
@@ -19,14 +21,24 @@ public class MainFrame extends JFrame {
     private void configureButton(JButton button) {
         button.setMaximumSize(new Dimension(200, 40));
     }
-    private void configureLayout(JPanel panel){
+
+    private void configureLayout(JPanel panel) {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
     }
-    private void configureCardBorder(JPanel panel){
+
+    private void configureCardBorder(JPanel panel) {
         panel.setBorder(
                 BorderFactory.createCompoundBorder(
                         BorderFactory.createLineBorder(java.awt.Color.GRAY),
                         BorderFactory.createEmptyBorder(15, 15, 15, 15)));
+    }
+
+    private void configureCardValue(JLabel label) {
+        label.setFont(new Font("Arial", Font.BOLD, 28));
+    }
+
+    private void configureCardTitle(JLabel label) {
+        label.setFont(new Font("Arial", Font.PLAIN, 16));
     }
 
     public MainFrame() {
@@ -92,36 +104,44 @@ public class MainFrame extends JFrame {
         JLabel unclaimedItemTitle = new JLabel("Unclaimed Items");
         JLabel unclaimedItemValue = new JLabel("14");
 
-        lostItemCard.add(lostItemTitle);
-        lostItemCard.add(lostItemValue);
+        JPanel[] cardPanels = {
+                lostItemCard, foundItemCard, claimedItemCard, unclaimedItemCard
+        };
+        JLabel[] cardTitles = {
+                lostItemTitle, foundItemTitle, claimedItemTitle, unclaimedItemTitle
+        };
 
-        foundItemCard.add(foundItemTitle);
-        foundItemCard.add(foundItemValue);
+        JLabel[] cardValues = {
+                lostItemValue, foundItemValue, claimedItemValue, unclaimedItemValue
+        };
 
-        claimedItemCard.add(claimedItemTitle);
-        claimedItemCard.add(claimedItemValue);
-
-        unclaimedItemCard.add(unclaimedItemTitle);
-        unclaimedItemCard.add(unclaimedItemValue);
+        for (int i = 0; i < cardPanels.length; i++) {
+            cardPanels[i].add(cardTitles[i]);
+            cardPanels[i].add(cardValues[i]);
+        }
 
         contentPanel.setLayout(new GridLayout(2, 2, 10, 10));
 
-        configureLayout(lostItemCard);
-        configureLayout(foundItemCard);
-        configureLayout(claimedItemCard);
-        configureLayout(unclaimedItemCard);
+        for (JPanel panels : cardPanels) {
+            configureLayout(panels);
+            configureCardBorder(panels);
+        }
 
-        configureCardBorder(lostItemCard);
-        configureCardBorder(foundItemCard);
-        configureCardBorder(claimedItemCard);
-        configureCardBorder(unclaimedItemCard);
+        for (JLabel value : cardValues) {
+            configureCardValue(value);
+            value.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+
+        for (JLabel title : cardTitles) {
+            configureCardTitle(title);
+            title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
 
         contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        contentPanel.add(lostItemCard);
-        contentPanel.add(foundItemCard);
-        contentPanel.add(claimedItemCard);
-        contentPanel.add(unclaimedItemCard);
+        for(JPanel panel : cardPanels){
+            contentPanel.add(panel);
+        }
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
         add(mainPanel);
