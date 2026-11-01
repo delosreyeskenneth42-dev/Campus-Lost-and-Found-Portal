@@ -41,6 +41,27 @@ public class MainFrame extends JFrame {
         label.setFont(new Font("Arial", Font.PLAIN, 16));
     }
 
+    private JPanel createDashboardCard(String title, String value) {
+        JPanel card = new JPanel();
+
+        JLabel titleLabel = new JLabel(title);
+        JLabel valueLabel = new JLabel(value);
+
+        configureCardValue(valueLabel);
+        valueLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        configureCardTitle(titleLabel);
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        card.add(titleLabel);
+        card.add(valueLabel);
+
+        configureLayout(card);
+        configureCardBorder(card);
+
+        return card;
+    }
+
     public MainFrame() {
         setTitle("Campus Lost and Found Portal");
         setSize(800, 600);
@@ -87,59 +108,20 @@ public class MainFrame extends JFrame {
 
         mainPanel.add(navigationPanel, BorderLayout.WEST);
 
-        JPanel lostItemCard = new JPanel();
-        JPanel foundItemCard = new JPanel();
-        JPanel claimedItemCard = new JPanel();
-        JPanel unclaimedItemCard = new JPanel();
-
-        JLabel lostItemTitle = new JLabel("Lost Items");
-        JLabel lostItemValue = new JLabel("12");
-
-        JLabel foundItemTitle = new JLabel("Found Items");
-        JLabel foundItemValue = new JLabel("10");
-
-        JLabel claimedItemTitle = new JLabel("Claimed Items");
-        JLabel claimedItemValue = new JLabel("8");
-
-        JLabel unclaimedItemTitle = new JLabel("Unclaimed Items");
-        JLabel unclaimedItemValue = new JLabel("14");
-
-        JPanel[] cardPanels = {
-                lostItemCard, foundItemCard, claimedItemCard, unclaimedItemCard
-        };
-        JLabel[] cardTitles = {
-                lostItemTitle, foundItemTitle, claimedItemTitle, unclaimedItemTitle
-        };
-
-        JLabel[] cardValues = {
-                lostItemValue, foundItemValue, claimedItemValue, unclaimedItemValue
-        };
-
-        for (int i = 0; i < cardPanels.length; i++) {
-            cardPanels[i].add(cardTitles[i]);
-            cardPanels[i].add(cardValues[i]);
-        }
+        JPanel lostItemCard = createDashboardCard("Lost Items", "12");
+        JPanel foundItemCard = createDashboardCard("Found Items", "8");
+        JPanel claimedItemCard = createDashboardCard("Claimed Items", "6");
+        JPanel unclaimedItemCard = createDashboardCard("Unclaimed Items", "14");
 
         contentPanel.setLayout(new GridLayout(2, 2, 10, 10));
 
-        for (JPanel panels : cardPanels) {
-            configureLayout(panels);
-            configureCardBorder(panels);
-        }
-
-        for (JLabel value : cardValues) {
-            configureCardValue(value);
-            value.setAlignmentX(Component.CENTER_ALIGNMENT);
-        }
-
-        for (JLabel title : cardTitles) {
-            configureCardTitle(title);
-            title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        }
+        JPanel[] cardPanels = {
+            lostItemCard, foundItemCard, claimedItemCard, unclaimedItemCard
+        };
 
         contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        for(JPanel panel : cardPanels){
+        for (JPanel panel : cardPanels) {
             contentPanel.add(panel);
         }
 
