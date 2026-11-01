@@ -19,6 +19,15 @@ public class MainFrame extends JFrame {
     private void configureButton(JButton button) {
         button.setMaximumSize(new Dimension(200, 40));
     }
+    private void configureLayout(JPanel panel){
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    }
+    private void configureCardBorder(JPanel panel){
+        panel.setBorder(
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createLineBorder(java.awt.Color.GRAY),
+                        BorderFactory.createEmptyBorder(15, 15, 15, 15)));
+    }
 
     public MainFrame() {
         setTitle("Campus Lost and Found Portal");
@@ -66,19 +75,53 @@ public class MainFrame extends JFrame {
 
         mainPanel.add(navigationPanel, BorderLayout.WEST);
 
-        JLabel searchLabel = new JLabel("Search Items");
-        JLabel reportLostLabel = new JLabel("Report Lost Item");
-        JLabel reportFoundLabel = new JLabel("Report Found Item");
-        JLabel browseLabel = new JLabel("Browse Items");
+        JPanel lostItemCard = new JPanel();
+        JPanel foundItemCard = new JPanel();
+        JPanel claimedItemCard = new JPanel();
+        JPanel unclaimedItemCard = new JPanel();
+
+        JLabel lostItemTitle = new JLabel("Lost Items");
+        JLabel lostItemValue = new JLabel("12");
+
+        JLabel foundItemTitle = new JLabel("Found Items");
+        JLabel foundItemValue = new JLabel("10");
+
+        JLabel claimedItemTitle = new JLabel("Claimed Items");
+        JLabel claimedItemValue = new JLabel("8");
+
+        JLabel unclaimedItemTitle = new JLabel("Unclaimed Items");
+        JLabel unclaimedItemValue = new JLabel("14");
+
+        lostItemCard.add(lostItemTitle);
+        lostItemCard.add(lostItemValue);
+
+        foundItemCard.add(foundItemTitle);
+        foundItemCard.add(foundItemValue);
+
+        claimedItemCard.add(claimedItemTitle);
+        claimedItemCard.add(claimedItemValue);
+
+        unclaimedItemCard.add(unclaimedItemTitle);
+        unclaimedItemCard.add(unclaimedItemValue);
 
         contentPanel.setLayout(new GridLayout(2, 2, 10, 10));
 
-        contentPanel.add(searchLabel);
-        contentPanel.add(reportLostLabel);
-        contentPanel.add(reportFoundLabel);
-        contentPanel.add(browseLabel);
+        configureLayout(lostItemCard);
+        configureLayout(foundItemCard);
+        configureLayout(claimedItemCard);
+        configureLayout(unclaimedItemCard);
+
+        configureCardBorder(lostItemCard);
+        configureCardBorder(foundItemCard);
+        configureCardBorder(claimedItemCard);
+        configureCardBorder(unclaimedItemCard);
 
         contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        contentPanel.add(lostItemCard);
+        contentPanel.add(foundItemCard);
+        contentPanel.add(claimedItemCard);
+        contentPanel.add(unclaimedItemCard);
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
         add(mainPanel);
