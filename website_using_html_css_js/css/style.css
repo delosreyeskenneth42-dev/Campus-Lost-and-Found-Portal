@@ -72,6 +72,42 @@ nav a {
     height: 65px;
     object-fit: contain;
 }
+.hero {
+    padding: 60px 30px;
+    margin: 15px;
+    background-color: var(--surface-color);
+    border-radius: 10px;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h2 {
+    color: var(--primary-color);
+    font-size: 36px;
+    margin-top: 0;
+}
+
+.hero p {
+    color: var(--muted-color);
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
 @media (max-width: 600px) {
     header {
         flex-direction: column;
