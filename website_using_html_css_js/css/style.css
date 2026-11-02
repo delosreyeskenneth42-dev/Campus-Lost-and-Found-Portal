@@ -108,6 +108,19 @@ nav a {
     text-decoration: none;
     font-weight: bold;
 }
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
 @media (max-width: 600px) {
     header {
         flex-direction: column;
