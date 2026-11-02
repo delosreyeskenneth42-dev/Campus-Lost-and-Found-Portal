@@ -3,6 +3,7 @@ package com.campus.lostfound.ui;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Dimension;
@@ -59,6 +60,27 @@ public class MainFrame extends JFrame {
         configureCardBorder(card);
 
         return card;
+    }
+
+    private JPanel createRecentItemRow(String title, String status) {
+        JPanel row = new JPanel();
+
+        JLabel titleLabel = new JLabel(title);
+        JLabel statusLabel = new JLabel(status);
+
+        row.setLayout(new BorderLayout());
+        row.setBorder(
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY),
+                        BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+
+        row.add(titleLabel, BorderLayout.WEST);
+        row.add(statusLabel, BorderLayout.EAST);
+
+        row.setMaximumSize(
+                new Dimension(Integer.MAX_VALUE, row.getPreferredSize().height));
+
+        return row;
     }
 
     public MainFrame() {
@@ -126,9 +148,9 @@ public class MainFrame extends JFrame {
         recentItemsPanel.setLayout(new BorderLayout());
         recentItemsListPanel.setLayout(new BoxLayout(recentItemsListPanel, BoxLayout.Y_AXIS));
 
-        JLabel item1 = new JLabel("Black Wallet - Found");
-        JLabel item2 = new JLabel("Blue Backpack - Lost");
-        JLabel item3 = new JLabel("Water Bottle - Found");
+        JPanel item1 = createRecentItemRow("Black Wallet", "Found");
+        JPanel item2 = createRecentItemRow("Blue Backpack", "Lost");
+        JPanel item3 = createRecentItemRow("Water Bottle", "Found");
 
         recentItemsListPanel.add(Box.createVerticalStrut(10));
         recentItemsListPanel.add(item1);
@@ -140,6 +162,9 @@ public class MainFrame extends JFrame {
         recentItemsListPanel.add(item3);
 
         JLabel recentItemsTitle = new JLabel("Recent Items");
+
+        recentItemsTitle.setBorder(
+                BorderFactory.createEmptyBorder(0, 0, 10, 0));
         recentItemsPanel.add(recentItemsTitle, BorderLayout.NORTH);
         recentItemsPanel.add(recentItemsListPanel, BorderLayout.CENTER);
 
