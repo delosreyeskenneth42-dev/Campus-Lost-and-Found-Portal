@@ -61,6 +61,17 @@ nav a {
     border-radius: 6px;
     font-weight: bold;
 }
+.site-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-brand img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
 @media (max-width: 600px) {
     header {
         flex-direction: column;
