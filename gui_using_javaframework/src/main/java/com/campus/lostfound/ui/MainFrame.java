@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
@@ -113,17 +112,45 @@ public class MainFrame extends JFrame {
         JPanel claimedItemCard = createDashboardCard("Claimed Items", "6");
         JPanel unclaimedItemCard = createDashboardCard("Unclaimed Items", "14");
 
-        contentPanel.setLayout(new GridLayout(2, 2, 10, 10));
+        contentPanel.setLayout(new BorderLayout());
 
-        JPanel[] cardPanels = {
-            lostItemCard, foundItemCard, claimedItemCard, unclaimedItemCard
+        JPanel[] cardPanelLists = {
+                lostItemCard, foundItemCard, claimedItemCard, unclaimedItemCard
         };
+
+        JPanel cardsPanel = new JPanel();
+        JPanel recentItemsPanel = new JPanel();
+        JPanel recentItemsListPanel = new JPanel();
+
+        cardsPanel.setLayout(new GridLayout(2, 2, 10, 10));
+        recentItemsPanel.setLayout(new BorderLayout());
+        recentItemsListPanel.setLayout(new BoxLayout(recentItemsListPanel, BoxLayout.Y_AXIS));
+
+        JLabel item1 = new JLabel("Black Wallet - Found");
+        JLabel item2 = new JLabel("Blue Backpack - Lost");
+        JLabel item3 = new JLabel("Water Bottle - Found");
+
+        recentItemsListPanel.add(Box.createVerticalStrut(10));
+        recentItemsListPanel.add(item1);
+        recentItemsListPanel.add(Box.createVerticalStrut(10));
+
+        recentItemsListPanel.add(item2);
+        recentItemsListPanel.add(Box.createVerticalStrut(10));
+
+        recentItemsListPanel.add(item3);
+
+        JLabel recentItemsTitle = new JLabel("Recent Items");
+        recentItemsPanel.add(recentItemsTitle, BorderLayout.NORTH);
+        recentItemsPanel.add(recentItemsListPanel, BorderLayout.CENTER);
+
+        for (JPanel panel : cardPanelLists) {
+            cardsPanel.add(panel);
+        }
 
         contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        for (JPanel panel : cardPanels) {
-            contentPanel.add(panel);
-        }
+        contentPanel.add(cardsPanel, BorderLayout.NORTH);
+        contentPanel.add(recentItemsPanel, BorderLayout.CENTER);
 
         mainPanel.add(contentPanel, BorderLayout.CENTER);
         add(mainPanel);
