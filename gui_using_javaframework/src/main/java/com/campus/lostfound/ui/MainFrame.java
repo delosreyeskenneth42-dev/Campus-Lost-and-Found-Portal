@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Dimension;
+import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -94,12 +95,19 @@ public class MainFrame extends JFrame {
         JPanel contentPanel = new JPanel();
         JPanel navigationPanel = new JPanel();
 
+        CardLayout cardLayout = new CardLayout();
+        JPanel screenPanel = new JPanel(cardLayout);
+
         navigationPanel.setLayout(new BoxLayout(navigationPanel, BoxLayout.Y_AXIS));
 
         JButton dashboardButton = new JButton("Dashboard");
         JButton browseButton = new JButton("Browse Items");
         JButton reportLostButton = new JButton("Report Lost Item");
         JButton reportFoundButton = new JButton("Report Found Item");
+
+        browseButton.addActionListener(e -> {
+            cardLayout.show(screenPanel, "browse");
+        });
 
         configureButton(dashboardButton);
         configureButton(browseButton);
@@ -177,7 +185,14 @@ public class MainFrame extends JFrame {
         contentPanel.add(cardsPanel, BorderLayout.NORTH);
         contentPanel.add(recentItemsPanel, BorderLayout.CENTER);
 
-        mainPanel.add(contentPanel, BorderLayout.CENTER);
+        screenPanel.add(contentPanel, "dashboard");
+
+        JPanel browsePanel = new JPanel();
+        browsePanel.add(new JLabel("Browse Items Screen"));
+
+        screenPanel.add(browsePanel, "browse");
+
+        mainPanel.add(screenPanel, BorderLayout.CENTER);
         add(mainPanel);
     }
 }
