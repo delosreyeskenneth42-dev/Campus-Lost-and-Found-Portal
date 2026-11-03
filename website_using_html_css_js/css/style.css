@@ -121,6 +121,45 @@ nav a {
 .btn:hover {
     opacity: 0.85;
 }
+.page-heading {
+    text-align: center;
+}
+
+.page-heading h2 {
+    color: var(--primary-color);
+    font-size: 32px;
+}
+
+.page-heading p {
+    font-size: 17px;
+}
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+.item-card {
+    padding: 20px;
+    background-color: var(--surface-color);
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.item-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.item-card p {
+    color: var(--muted-color);
+    font-size: 15px;
+}
+
+.item-card:hover {
+    transform: translateY(-4px);
+}
 @media (max-width: 600px) {
     header {
         flex-direction: column;
