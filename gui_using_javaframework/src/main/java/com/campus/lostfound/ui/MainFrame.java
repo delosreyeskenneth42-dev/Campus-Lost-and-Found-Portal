@@ -18,72 +18,6 @@ import javax.swing.Box;
 import javax.swing.JButton;
 
 public class MainFrame extends JFrame {
-
-    private void configureButton(JButton button) {
-        button.setMaximumSize(new Dimension(200, 40));
-    }
-
-    private void configureLayout(JPanel panel) {
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-    }
-
-    private void configureCardBorder(JPanel panel) {
-        panel.setBorder(
-                BorderFactory.createCompoundBorder(
-                        BorderFactory.createLineBorder(java.awt.Color.GRAY),
-                        BorderFactory.createEmptyBorder(15, 15, 15, 15)));
-    }
-
-    private void configureCardValue(JLabel label) {
-        label.setFont(new Font("Arial", Font.BOLD, 28));
-    }
-
-    private void configureCardTitle(JLabel label) {
-        label.setFont(new Font("Arial", Font.PLAIN, 16));
-    }
-
-    private JPanel createDashboardCard(String title, String value) {
-        JPanel card = new JPanel();
-
-        JLabel titleLabel = new JLabel(title);
-        JLabel valueLabel = new JLabel(value);
-
-        configureCardValue(valueLabel);
-        valueLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        configureCardTitle(titleLabel);
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        card.add(titleLabel);
-        card.add(valueLabel);
-
-        configureLayout(card);
-        configureCardBorder(card);
-
-        return card;
-    }
-
-    private JPanel createRecentItemRow(String title, String status) {
-        JPanel row = new JPanel();
-
-        JLabel titleLabel = new JLabel(title);
-        JLabel statusLabel = new JLabel(status);
-
-        row.setLayout(new BorderLayout());
-        row.setBorder(
-                BorderFactory.createCompoundBorder(
-                        BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY),
-                        BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-
-        row.add(titleLabel, BorderLayout.WEST);
-        row.add(statusLabel, BorderLayout.EAST);
-
-        row.setMaximumSize(
-                new Dimension(Integer.MAX_VALUE, row.getPreferredSize().height));
-
-        return row;
-    }
-
     public MainFrame() {
         setTitle("Campus Lost and Found Portal");
         setSize(800, 600);
@@ -109,23 +43,11 @@ public class MainFrame extends JFrame {
             cardLayout.show(screenPanel, "browse");
         });
 
-        configureButton(dashboardButton);
-        configureButton(browseButton);
-        configureButton(reportLostButton);
-        configureButton(reportFoundButton);
+        JButton[] buttons = {dashboardButton, browseButton, reportLostButton, reportFoundButton};
 
-        navigationPanel.add(dashboardButton);
-        navigationPanel.add(Box.createVerticalStrut(10));
-
-        navigationPanel.add(browseButton);
-        navigationPanel.add(Box.createVerticalStrut(10));
-
-        navigationPanel.add(reportLostButton);
-        navigationPanel.add(Box.createVerticalStrut(10));
-
-        navigationPanel.add(reportFoundButton);
-
-        navigationPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
+        for(int i = 0; i < buttons.length; i++){
+            configureNavigationPanel(buttons[i], navigationPanel, 10);
+        }
 
         mainPanel.setLayout(new BorderLayout(10, 10));
 
@@ -194,5 +116,77 @@ public class MainFrame extends JFrame {
 
         mainPanel.add(screenPanel, BorderLayout.CENTER);
         add(mainPanel);
+    }
+
+    private void configureButton(JButton button) {
+        button.setMaximumSize(new Dimension(200, 40));
+    }
+
+    private void configureLayout(JPanel panel) {
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    }
+
+    private void configureCardBorder(JPanel panel) {
+        panel.setBorder(
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createLineBorder(java.awt.Color.GRAY),
+                        BorderFactory.createEmptyBorder(15, 15, 15, 15)));
+    }
+
+    private void configureCardValue(JLabel label) {
+        label.setFont(new Font("Arial", Font.BOLD, 28));
+    }
+
+    private void configureCardTitle(JLabel label) {
+        label.setFont(new Font("Arial", Font.PLAIN, 16));
+    }
+
+    private JPanel createDashboardCard(String title, String value) {
+        JPanel card = new JPanel();
+
+        JLabel titleLabel = new JLabel(title);
+        JLabel valueLabel = new JLabel(value);
+
+        configureCardValue(valueLabel);
+        valueLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        configureCardTitle(titleLabel);
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        card.add(titleLabel);
+        card.add(valueLabel);
+
+        configureLayout(card);
+        configureCardBorder(card);
+
+        return card;
+    }
+
+    private JPanel createRecentItemRow(String title, String status) {
+        JPanel row = new JPanel();
+
+        JLabel titleLabel = new JLabel(title);
+        JLabel statusLabel = new JLabel(status);
+
+        row.setLayout(new BorderLayout());
+        row.setBorder(
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY),
+                        BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+
+        row.add(titleLabel, BorderLayout.WEST);
+        row.add(statusLabel, BorderLayout.EAST);
+
+        row.setMaximumSize(
+                new Dimension(Integer.MAX_VALUE, row.getPreferredSize().height));
+
+        return row;
+    }
+    private void configureNavigationPanel(JButton button, JPanel panel, int spacing){
+
+        configureButton(button);
+        panel.add(button);
+        panel.add(Box.createVerticalStrut(spacing));
+
     }
 }
