@@ -16,14 +16,14 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
 }
-header {
+.site-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: var(--surface-color);
 }
-nav {
+.site-nav {
     display: flex;
     gap: 15px;
     margin-top: 0;
@@ -43,19 +43,19 @@ p {
     color: var(--accent-color);
 }
 
-nav a:hover {
+.site-nav a:hover {
     background-color: var(--background-color);
 }
-main{
+.page-main{
     padding: 25px;
 }
-section {
+.content-section {
     padding: 30px;
     margin: 15px;
     background-color: var(--surface-color);
     border-radius: 10px;
 }
-nav a {
+.site-nav a {
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 6px;
@@ -177,21 +177,31 @@ nav a {
     background-color: #fee2e2;
     color: #991b1b;
 }
+.site-footer{
+    padding: 15px 0;
+}
+.items-section {
+    padding: 30px;
+    margin: 15px;
+    background-color: var(--surface-color);
+    border-radius: 10px;
+}
 @media (max-width: 600px) {
-    header {
+    .site-header {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    nav {
+    .site-nav {
         flex-wrap: wrap;
     }
 
-    main {
+    .page-main {
         padding: 10px;
     }
 
-    section {
+    .content-section,
+    .items-section {
         margin: 5px;
         padding: 20px;
     }
