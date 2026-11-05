@@ -186,6 +186,33 @@ p {
     background-color: var(--surface-color);
     border-radius: 10px;
 }
+.items-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.items-controls input,
+.items-controls select {
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.items-controls input {
+    flex: 1;
+}
+
+.items-controls select {
+    min-width: 160px;
+}
+
+@media (max-width: 600px) {
+    .items-controls {
+        flex-direction: column;
+    }
+}
 @media (max-width: 600px) {
     .site-header {
         flex-direction: column;

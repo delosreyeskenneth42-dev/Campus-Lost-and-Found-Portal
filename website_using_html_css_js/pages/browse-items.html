@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC
-    "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
@@ -14,8 +12,7 @@
 <body>
     <div class="site-header">
         <div class="site-brand">
-            <img src="../assets/images/dorsu-logo.png"
-                alt="Davao Oriental State University logo" />
+            <img src="../assets/images/dorsu-logo.png" alt="Davao Oriental State University logo" />
             <h1>Campus Lost and Found Portal</h1>
         </div>
 
@@ -33,6 +30,18 @@
 
         <div class="items-section">
             <h2>Recently Reported Items</h2>
+
+            <div class="items-controls">
+
+                <input type="text" id="search-input" placeholder="Search for an item..." />
+
+                <select id="status-filter">
+                    <option value="all">All Items</option>
+                    <option value="lost">Lost Items</option>
+                    <option value="found">Found Items</option>
+                </select>
+
+            </div>
 
             <div class="items-container">
 
