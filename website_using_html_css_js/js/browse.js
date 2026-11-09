@@ -1,3 +1,5 @@
 var searchInput = document.getElementById("search-input");
 
-console.log(searchInput);
+searchInput.addEventListener("input", function() {
+    console.log(searchInput.value);
+});
