@@ -42,10 +42,18 @@ public class MainFrame extends JFrame {
         browseButton.addActionListener(e -> {
             cardLayout.show(screenPanel, "browse");
         });
+        dashboardButton.addActionListener(e -> {
+            cardLayout.show(screenPanel, "dashboard");
+        });
+        reportLostButton.addActionListener(e -> {
+            cardLayout.show(screenPanel, "reportLostItem");
+        });
+        reportFoundButton.addActionListener(e -> {
+            cardLayout.show(screenPanel, "reportFoundItem");
+        });
+        JButton[] buttons = { dashboardButton, browseButton, reportLostButton, reportFoundButton };
 
-        JButton[] buttons = {dashboardButton, browseButton, reportLostButton, reportFoundButton};
-
-        for(int i = 0; i < buttons.length; i++){
+        for (int i = 0; i < buttons.length; i++) {
             configureNavigationPanel(buttons[i], navigationPanel, 10);
         }
 
@@ -113,6 +121,16 @@ public class MainFrame extends JFrame {
         browsePanel.add(new JLabel("Browse Items Screen"));
 
         screenPanel.add(browsePanel, "browse");
+
+        JPanel reportLostItemPanel = new JPanel();
+        reportLostItemPanel.add(new JLabel("Report Lost Items Screen!"));
+
+        screenPanel.add(reportLostItemPanel, "reportLostItem");
+
+        JPanel reportFoundItemPanel = new JPanel();
+        reportFoundItemPanel.add(new JLabel("Report Found Items Screen!"));
+
+        screenPanel.add(reportFoundItemPanel, "reportFoundItem");
 
         mainPanel.add(screenPanel, BorderLayout.CENTER);
         add(mainPanel);
@@ -182,7 +200,8 @@ public class MainFrame extends JFrame {
 
         return row;
     }
-    private void configureNavigationPanel(JButton button, JPanel panel, int spacing){
+
+    private void configureNavigationPanel(JButton button, JPanel panel, int spacing) {
 
         configureButton(button);
         panel.add(button);
