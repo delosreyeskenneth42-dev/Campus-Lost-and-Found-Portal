@@ -246,3 +246,10 @@ p {
 .site-footer {
     padding: 15px 0;
 }
+/* No Results Message */
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 25px;
+    color: var(--muted-color);
+}

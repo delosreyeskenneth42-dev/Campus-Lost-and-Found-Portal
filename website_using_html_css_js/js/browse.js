@@ -8,7 +8,9 @@ function filterItems() {
 
     var searchText = searchInput.value.toLowerCase();
     var selectedStatus = statusFilter.value;
+    var noResults = document.getElementById("no-results");
 
+    var visibleItems = 0;
     itemCards.forEach(function (card) {
 
         var itemName = card.querySelector("h3").textContent.toLowerCase();
@@ -22,10 +24,15 @@ function filterItems() {
 
         if (matchesSearch && matchesStatus) {
             card.style.display = "";
+            visibleItems++;
         } else {
             card.style.display = "none";
         }
-
+        if (visibleItems === 0) {
+            noResults.style.display = "block";
+        } else {
+            noResults.style.display = "none";
+        }
     });
 
 }
