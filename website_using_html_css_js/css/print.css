@@ -1,0 +1,39 @@
+/* =========================================
+   PRINT STYLESHEET
+   Adjustments for printed pages
+========================================= */
+
+@media print {
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .site-header {
+        background-color: white;
+        border-bottom: 1px solid #cccccc;
+    }
+
+    .site-nav,
+    .hero-actions {
+        display: none;
+    }
+
+    .hero,
+    .content-section,
+    .items-section,
+    .item-card {
+        box-shadow: none;
+        background-color: white;
+    }
+
+    .item-card {
+        break-inside: avoid;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+}
