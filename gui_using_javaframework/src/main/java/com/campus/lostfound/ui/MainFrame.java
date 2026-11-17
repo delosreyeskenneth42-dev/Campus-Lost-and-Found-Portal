@@ -16,6 +16,8 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class MainFrame extends JFrame {
     public MainFrame() {
@@ -118,7 +120,22 @@ public class MainFrame extends JFrame {
         screenPanel.add(contentPanel, "dashboard");
 
         JPanel browsePanel = new JPanel();
-        browsePanel.add(new JLabel("Browse Items Screen"));
+
+        String[] columnNames = {
+                "Item Name", "Category", "Status"
+        };
+
+        String[][] items = {
+                { "Black Wallet", "Accessories", "Found" },
+                { "Blue Backpack", "Bags", "Lost" },
+                { "Water Bottle", "Others", "Found" }
+        };
+
+        JTable itemsTable = new JTable(items, columnNames);
+        JScrollPane scrollPane = new JScrollPane(itemsTable);
+
+        browsePanel.setLayout(new BorderLayout());
+        browsePanel.add(scrollPane, BorderLayout.CENTER);
 
         screenPanel.add(browsePanel, "browse");
 
