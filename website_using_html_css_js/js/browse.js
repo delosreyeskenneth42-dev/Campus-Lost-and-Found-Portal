@@ -1,4 +1,5 @@
 
+var clearSearchButton = document.getElementById("clear-search");
 var searchInput = document.getElementById("search-input");
 var statusFilter = document.getElementById("status-filter");
 
@@ -40,3 +41,9 @@ function filterItems() {
 searchInput.addEventListener("input", filterItems);
 
 statusFilter.addEventListener("change", filterItems);
+clearSearchButton.addEventListener("click", function () {
+    searchInput.value = "";
+    statusFilter.value = "all";
+
+    filterItems();
+});
