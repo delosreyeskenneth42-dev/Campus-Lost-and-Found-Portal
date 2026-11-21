@@ -135,6 +135,14 @@ public class MainFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(itemsTable);
 
         browsePanel.setLayout(new BorderLayout());
+        JLabel browseTitle = new JLabel("Browse Items");
+
+        browseTitle.setFont(new Font("Arial", Font.BOLD, 24));
+
+        browseTitle.setBorder(
+                BorderFactory.createEmptyBorder(0, 0, 15, 0));
+
+        browsePanel.add(browseTitle, BorderLayout.NORTH);
         browsePanel.add(scrollPane, BorderLayout.CENTER);
 
         screenPanel.add(browsePanel, "browse");
