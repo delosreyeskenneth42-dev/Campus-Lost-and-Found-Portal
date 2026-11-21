@@ -18,6 +18,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 public class MainFrame extends JFrame {
     public MainFrame() {
@@ -142,9 +143,24 @@ public class MainFrame extends JFrame {
         browseTitle.setBorder(
                 BorderFactory.createEmptyBorder(0, 0, 15, 0));
 
-        browsePanel.add(browseTitle, BorderLayout.NORTH);
         browsePanel.add(scrollPane, BorderLayout.CENTER);
 
+        JPanel searchPanel = new JPanel();
+
+        JTextField searchField = new JTextField(20);
+        JButton searchButton = new JButton("Search");
+
+        searchPanel.add(searchField);
+        searchPanel.add(searchButton);
+
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BorderLayout());
+
+        topPanel.add(browseTitle, BorderLayout.NORTH);
+        topPanel.add(searchPanel, BorderLayout.CENTER);
+
+        browsePanel.add(topPanel, BorderLayout.NORTH);
+        
         screenPanel.add(browsePanel, "browse");
 
         JPanel reportLostItemPanel = new JPanel();
