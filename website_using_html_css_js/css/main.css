@@ -246,10 +246,25 @@ p {
 .site-footer {
     padding: 15px 0;
 }
+
 /* No Results Message */
 .no-results {
     display: none;
     text-align: center;
     padding: 25px;
     color: var(--muted-color);
+}
+
+#clear-search {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#clear-search:hover {
+    opacity: 0.85;
 }
