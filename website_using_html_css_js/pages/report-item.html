@@ -25,9 +25,68 @@
     </div>
 
     <div class="page-main">
-        <div class="content-section">
+        <div class="content-section report-section">
+
             <h2>Report an Item</h2>
-            <p>This page will contain the item reporting form.</p>
+
+            <p>Provide the necessary details about the lost or found item.</p>
+
+            <form id="report-form" action="#" method="post">
+
+                <div class="form-group">
+                    <label for="item-type">Report Type</label>
+
+                    <select id="item-type" name="item-type">
+                        <option value="">Select report type</option>
+                        <option value="lost">Lost Item</option>
+                        <option value="found">Found Item</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-name">Item Name</label>
+                    <input type="text" id="item-name" name="item-name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="item-category">Category</label>
+
+                    <select id="item-category" name="item-category">
+                        <option value="">Select category</option>
+                        <option value="personal">Personal Belongings</option>
+                        <option value="identification">Identification</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="documents">Documents</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-description">Description</label>
+                    <textarea id="item-description" name="item-description" rows="5" cols="30"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-location">Location</label>
+                    <input type="text" id="item-location" name="item-location" />
+                </div>
+
+                <div class="form-group">
+                    <label for="item-date">Date Lost or Found</label>
+                    <input type="text" id="item-date" name="item-date" />
+                </div>
+
+                <div class="form-group">
+                    <label for="reporter-contact">Contact Information</label>
+                    <input type="text" id="reporter-contact" name="reporter-contact" />
+                </div>
+
+                <div class="form-actions">
+                    <input type="submit" value="Submit Report" />
+                </div>
+
+            </form>
+
         </div>
     </div>
 
