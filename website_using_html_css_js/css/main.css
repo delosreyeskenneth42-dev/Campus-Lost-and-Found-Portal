@@ -268,3 +268,62 @@ p {
 #clear-search:hover {
     opacity: 0.85;
 }
+
+/* =========================================
+   REPORT ITEM FORM
+========================================= */
+
+.report-section {
+    max-width: 800px;
+    margin: 15px auto;
+}
+
+.report-section h2 {
+    color: var(--primary-color);
+}
+
+/* Form Groups */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Form Inputs */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Submit Button */
+.form-actions input {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-actions input:hover {
+    opacity: 0.85;
+}
